@@ -2,9 +2,9 @@
 <CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
 	<CodeSnippet Format="1.0.0">
 		<Header>
-			<Title>mvvmcmdasync</Title>
-			<Shortcut>mvvmcmdasync</Shortcut>
-			<Description>Code snippet for MVVM AsyncRelayCommand with function, property and backing field</Description>
+			<Title>mvvmcmdasyncpex</Title>
+			<Shortcut>mvvmcmdasyncpex</Shortcut>
+			<Description>Code snippet for MVVM AsyncRelayCommand&gt;T&lt; with function, property and backing field and CanExecute function.</Description>
 			<Author>Kjell-Åke Gafvelin</Author>
 			<SnippetTypes>
 				<SnippetType>Expansion</SnippetType>
@@ -12,6 +12,11 @@
 		</Header>
 		<Snippet>
 			<Declarations>
+				<Literal>
+					<ID>type</ID>
+					<ToolTip>Property type</ToolTip>
+					<Default>T</Default>
+				</Literal>
 				<Literal>
 					<ID>property</ID>
 					<ToolTip>Property name</ToolTip>
@@ -23,13 +28,18 @@
 					<Default>myVar</Default>
 				</Literal>
 			</Declarations>
-			<Code Language="csharp"><![CDATA[private AsyncRelayCommand $field$Command;
-	public AsyncRelayCommand $property$Command => $field$Command ??= new($property$);
+			<Code Language="csharp"><![CDATA[private AsyncRelayCommand<$type$> $field$Command;
+	public AsyncRelayCommand<$type$> $property$Command => $field$Command ??= new($property$, CanExecute$property$);
 
-    private async Task $property$()
+    private async Task $property$($type$ parameter)
     {
-		$end$
-    }]]>
+        $end$
+    }
+	
+	private bool CanExecute$property$($type$ parameter)
+	{
+		
+	}]]>
 			</Code>
             <Imports>
                 <Import>

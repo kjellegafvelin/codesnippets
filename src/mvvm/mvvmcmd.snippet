@@ -24,8 +24,7 @@
 				</Literal>
 			</Declarations>
 			<Code Language="csharp"><![CDATA[private RelayCommand $field$Command;
-
-	public RelayCommand $property$Command => $field$Command ??= new RelayCommand($property$);
+	public RelayCommand $property$Command => $field$Command ??= new($property$);
 
     private void $property$()
     {

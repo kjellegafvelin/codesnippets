@@ -2,9 +2,9 @@
 <CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
 	<CodeSnippet Format="1.0.0">
 		<Header>
-			<Title>mvvmcmdasync</Title>
-			<Shortcut>mvvmcmdasync</Shortcut>
-			<Description>Code snippet for MVVM AsyncRelayCommand with function, property and backing field</Description>
+			<Title>mvvmcmdasyncex</Title>
+			<Shortcut>mvvmcmdasyncex</Shortcut>
+			<Description>Code snippet for MVVM AsyncRelayCommand with function, property, backing field and CanExecute function.</Description>
 			<Author>Kjell-Åke Gafvelin</Author>
 			<SnippetTypes>
 				<SnippetType>Expansion</SnippetType>
@@ -24,12 +24,17 @@
 				</Literal>
 			</Declarations>
 			<Code Language="csharp"><![CDATA[private AsyncRelayCommand $field$Command;
-	public AsyncRelayCommand $property$Command => $field$Command ??= new($property$);
+	public AsyncRelayCommand $property$Command => $field$Command ??= new($property$, CanExecute$property$);
 
     private async Task $property$()
     {
-		$end$
-    }]]>
+        $end$
+    }
+	
+	private bool CanExecute$property$()
+	{
+		
+	}]]>
 			</Code>
             <Imports>
                 <Import>

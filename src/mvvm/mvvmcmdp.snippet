@@ -2,9 +2,9 @@
 <CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
 	<CodeSnippet Format="1.0.0">
 		<Header>
-			<Title>mvvmprop</Title>
-			<Shortcut>mvvmprop</Shortcut>
-			<Description>Code snippet for MVVM property and backing field</Description>
+			<Title>mvvmcmdp</Title>
+			<Shortcut>mvvmcmdp</Shortcut>
+			<Description>Code snippet for MVVM RelayCommand&gt;T&lt; with function, property and backing field</Description>
 			<Author>Kjell-Åke Gafvelin</Author>
 			<SnippetTypes>
 				<SnippetType>Expansion</SnippetType>
@@ -15,7 +15,7 @@
 				<Literal>
 					<ID>type</ID>
 					<ToolTip>Property type</ToolTip>
-					<Default>int</Default>
+					<Default>T</Default>
 				</Literal>
 				<Literal>
 					<ID>property</ID>
@@ -28,14 +28,19 @@
 					<Default>myVar</Default>
 				</Literal>
 			</Declarations>
-			<Code Language="csharp"><![CDATA[private $type$ $field$;
-	public $type$ $property$
-	{
-		get => $field$;
-		set => SetProperty(ref $field$, value);
-	}
-	$end$]]>
+			<Code Language="csharp"><![CDATA[private RelayCommand<$type$> $field$Command;
+	public RelayCommand<$type$> $property$Command => $field$Command ??= new($property$);
+
+    private void $property$($type$ parameter)
+    {
+        $end$
+    }]]>
 			</Code>
-		</Snippet>
+            <Imports>
+                <Import>
+                    <Namespace>Microsoft.Toolkit.Mvvm.Input</Namespace>
+                </Import>
+            </Imports>
+        </Snippet>
 	</CodeSnippet>
 </CodeSnippets>
